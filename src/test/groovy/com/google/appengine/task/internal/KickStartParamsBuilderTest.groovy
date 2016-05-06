@@ -77,6 +77,31 @@ class KickStartParamsBuilderTest extends Specification {
             params.get(6) == "$KickStartParamsBuilder.JVM_FLAG=-Dappengine.user.timezone=UTC"
             params.get(7) == '/dev/main/war'
     }
+    
+    def "Build parameters for minimal arguments plus disable update check, httAddress, additional JVM flags and generatedDir"() {
+        given: "no extra arguments are provided"
+            KickStartParams kickStartParams = createBasicParams()
+            kickStartParams.disableUpdateCheck = true
+            kickStartParams.jvmFlags = ['-Xmx1024', '-Dappengine.user.timezone=UTC']
+            kickStartParams.httpAddress = '0.0.0.0'
+            kickStartParams.generatedDir = '/test/generated/dir'
+
+        when: "the params are built"
+            List<String> params = KickStartParamsBuilder.instance.buildCommandLineParams(kickStartParams)
+
+        then: "the basic parameters are set up"
+            params.size() == 9
+            params.get(0) == KickStartParamsBuilder.MAIN_CLASS
+            params.get(1) == "$KickStartParamsBuilder.PORT=8080"
+            params.get(2) == "$KickStartParamsBuilder.ADDRESS=0.0.0.0"
+
+            params.get(3) == KickStartParamsBuilder.DISABLE_UPDATE_CHECK            
+            params.get(4) == "$KickStartParamsBuilder.GENERATED_DIR=/test/generated/dir"
+            params.get(5) == KickStartParamsBuilder.REMOTE_SHUTDOWN_FLAG
+            params.get(6) == "$KickStartParamsBuilder.JVM_FLAG=-Xmx1024"
+            params.get(7) == "$KickStartParamsBuilder.JVM_FLAG=-Dappengine.user.timezone=UTC"
+            params.get(8) == '/dev/main/war'
+    }
 
     private KickStartParams createBasicParams() {
         KickStartParams kickStartParams = new KickStartParams()

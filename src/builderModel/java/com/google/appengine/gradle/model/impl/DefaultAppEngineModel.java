@@ -36,10 +36,11 @@ public class DefaultAppEngineModel implements AppEngineModel, Serializable {
     final private File webAppDir;
     final private String sdkRoot;
     final private AppCfgOptions appCfgOptions;
+    final private String generatedDir;
 
     public DefaultAppEngineModel(String httpAddress, Integer httpPort, Boolean disableUpdateCheck,
                                  String enhancerVersion, String enhancerApi, List<String> jvmFlags, File warDir,
-                                 File webAppDir, String sdkRoot, AppCfgOptions appCfgOptions) {
+                                 File webAppDir, String sdkRoot, AppCfgOptions appCfgOptions, String generatedDir) {
         this.httpAddress = httpAddress;
         this.httpPort = httpPort;
         this.disableUpdateCheck = disableUpdateCheck;
@@ -50,6 +51,7 @@ public class DefaultAppEngineModel implements AppEngineModel, Serializable {
         this.webAppDir = webAppDir;
         this.sdkRoot = sdkRoot;
         this.appCfgOptions = appCfgOptions;
+        this.generatedDir = generatedDir;
     }
 
     @Override
@@ -105,5 +107,10 @@ public class DefaultAppEngineModel implements AppEngineModel, Serializable {
     @Override
     public AppCfgOptions getAppCfgOptions() {
         return appCfgOptions;
+    }
+    
+    @Override
+    public String getGeneratedDir() {
+        return generatedDir;
     }
 }

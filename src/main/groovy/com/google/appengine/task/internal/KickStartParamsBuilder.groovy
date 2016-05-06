@@ -28,6 +28,7 @@ class KickStartParamsBuilder {
     static final String DISABLE_UPDATE_CHECK = '--disable_update_check'
     static final String JVM_FLAG = '--jvm_flag'
     static final String REMOTE_SHUTDOWN_FLAG = "--allow_remote_shutdown"
+    static final String GENERATED_DIR = '--generated_dir'
 
     /**
      * Builds command line parameters.
@@ -44,6 +45,10 @@ class KickStartParamsBuilder {
 
         if(kickStartParams.disableUpdateCheck) {
             params << DISABLE_UPDATE_CHECK
+        }
+        
+        if(kickStartParams.generatedDir) {
+            params << "$GENERATED_DIR=${kickStartParams.generatedDir}"
         }
 
         params << REMOTE_SHUTDOWN_FLAG

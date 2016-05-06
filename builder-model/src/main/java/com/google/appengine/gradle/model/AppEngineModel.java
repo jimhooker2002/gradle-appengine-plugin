@@ -34,4 +34,5 @@ public interface AppEngineModel {
     public File getWebAppDir();
     public String getAppEngineSdkRoot();
     public AppCfgOptions getAppCfgOptions();
+    public String getGeneratedDir();  // FIXME - Note above says update the builder model version - not sure where that is.
 }

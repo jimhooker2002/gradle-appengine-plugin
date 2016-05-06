@@ -317,6 +317,7 @@ class AppEnginePlugin implements Plugin<Project> {
             appengineRunTask.conventionMapping.map('disableDatagram') { appEnginePluginExtension.disableDatagram }
             appengineRunTask.conventionMapping.map('jvmFlags') { appEnginePluginExtension.jvmFlags }
             appengineRunTask.conventionMapping.map(EXPLODED_WAR_DIR_CONVENTION_PARAM) { appEnginePluginExtension.warDir ?: explodedAppDirectory }
+            appengineRunTask.conventionMapping.map('generatedDir') { appEnginePluginExtension.generatedDir }
         }
 
         RunTask appengineRunTask = project.tasks.create(APPENGINE_RUN, RunTask)

@@ -35,6 +35,7 @@ class RunTask extends AbstractTask implements Explodable {
     Boolean disableUpdateCheck
     Boolean disableDatagram
     List<String> jvmFlags
+    String generatedDir
     final KickStartSynchronizer kickStartSynchronizer = new KickStartSynchronizer()
     private static final String DEV_SERVER_STARTED = 'Dev App Server is now running'
 
@@ -93,6 +94,7 @@ class RunTask extends AbstractTask implements Explodable {
         kickStartParams.disableUpdateCheck = getDisableUpdateCheck()
         kickStartParams.jvmFlags = getJvmFlags()
         kickStartParams.explodedWarDirectory = getExplodedAppDirectory()
+        kickStartParams.generatedDir = getGeneratedDir()
 
         List<String> params = KickStartParamsBuilder.instance.buildCommandLineParams(kickStartParams)
         logger.info "Using params = $params"

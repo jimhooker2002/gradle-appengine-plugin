@@ -26,4 +26,5 @@ class KickStartParams {
     Boolean disableUpdateCheck
     List<String> jvmFlags
     File explodedWarDirectory
+    String generatedDir
 }

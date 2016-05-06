@@ -62,7 +62,8 @@ public class AppEngineToolingBuilderModel implements ToolingModelBuilder {
                                          conf.warDir ?: AppEnginePlugin.getExplodedAppDirectory(project),
                                          AppEnginePlugin.getAppDir(project),
                                          getSdkLocation(conf, project),
-                                         appCfgOptions)
+                                         appCfgOptions,
+                                         conf.generatedDir)
 
     }
 

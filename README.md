@@ -101,6 +101,7 @@ soon as the server has started. When false, this task blocks until the local dev
 takes precedence over _APPENGINE\_HOME_ and the system property _appengine.sdk.root_.
 * ~~`enhancerVersion`: The version (v1/v2) parameter for App Engine datanucleus enhancer task~~ Deprecated
 * ~~`enhancerApi`: The api (jdo/jpa) parameter for the App Engine datanucleas enhancer task~~ Deprecated
+* `generatedDir`: Set the directory where generated files are created.  Default is WEB-INF/appengine-generated directory under build/exploded-war/<default module>  
 
 Within `appengine` you can define optional properties in a closure named `appcfg`:
 
@@ -167,6 +168,7 @@ The task `appengineUpdate` allows you to specify upload specific settings. Defin
 ```gradle
 appengine {
   httpPort = 8085
+  generatedDir = '/generated/dir/location'
 
   appcfg {
     email = 'benjamin.muschko@gmail.com'
