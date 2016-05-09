@@ -34,6 +34,7 @@ class AppEnginePluginExtension {
     List<String> jvmFlags = []
     File warDir
     Boolean downloadSdk = false
+    String generatedDir = null
     AppConfigExtension appCfg = new AppConfigExtension()
     EndpointsExtension endpoints = new EndpointsExtension()
     EnhancerExtension enhancer = new EnhancerExtension()
